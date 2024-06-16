@@ -1,5 +1,4 @@
-Написать функцию парсинга текстового файла (`parse_file`), которая в качестве единственного аргумента принимает путь к файлу и возвращает набор словарей, содержащих данные. Работать с функцией предполагается только следующим образом:
-
+Write a function for parsing a text file (parse_file), which takes the path to the file as its only argument and returns a set of dictionaries containing the data. The function is intended to be used only in the following way:
 ```python
 def parse_file(path):
     ...
@@ -13,10 +12,9 @@ def load_data(path):
         # load document to database (or do something else)
 ```
 
-Файл представляет собой набор данных типа ключ-значение, ключ от значения отделен двоеточием.
-Из значений должны быть удалены лишние пробелы, многострочные значения должны быть объеденены в одну строку с сохранением переносов (но не отступов).
-Данные с повторяющимися ключами считаются многострочными, т.е. в исходном файле две следующие записи идентичны:
-
+The file is a collection of key-value data, with the key and value separated by a colon.
+Extra spaces must be removed from the values, and multiline values must be combined into one line, maintaining hyphens (but not indentations).
+Data with duplicate keys is considered multi-line, i.e. in the source file the following two entries are identical:
 ```
 foo: bar
      baz
@@ -25,11 +23,11 @@ foo: bar
 foo: baz
 ```
 
-Каждый документ в файле разделен как минимум одной пустой строкой, строки, начинающиеся с символа `#` означают комментарии и должны игнорироваться.
+Each document in the file is separated by at least one blank line; lines beginning with the `#` character are comments and should be ignored.
 
-Пример исходных данных находится в файле `example.txt`.
+An example of the source data is in the file `example.txt`.
 
-Пример одного из результирующих словарей после обработки:
+An example of one of the resulting dictionaries after processing:
 
 ```python
 {'as-block': 'AS30720 - AS30979',
@@ -55,20 +53,19 @@ foo: baz
  'source': 'AFRINIC'}
 ```
 
-Ограничения:
+Restrictions:
 
 * Python 3.7+;
-* только стандартная библиотека.
+* standard library only.
 
-За что будут бонусы:
+What will the bonuses be for:
 
-* если файл будет корректно открываться и закрываться даже в случае ексепшена;
-* если код будет структурирован (короткие и понятные функции, хорошее именование, комментарии где нужно);
-* если можно будет парсить большие файлы (больше размера ОЗУ);
-* если будут указаны аннотации типов;
-* если код будет оформлен по pep8;
-* если можно будет парсить данные из gzip-архива без распаковки.
-
+* if the file opens and closes correctly even in the event of an execution;
+* if the code is structured (short and clear functions, good naming, comments where necessary);
+* if it will be possible to parse large files (larger than the RAM size);
+* if type annotations are specified;
+* if the code is formatted using pep8;
+* if it will be possible to parse data from a gzip archive without unpacking.
 --- 
 
-*Решение можно постить на гитхабе в открытом репозитории, а так-же свободно показывать в качестве примеров своего кода =)*
+*The solution can be posted on Github in an open repository, and can also be freely shown as examples of your code =)*
